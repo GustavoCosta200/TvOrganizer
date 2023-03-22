@@ -18,7 +18,7 @@ namespace TVOrganizer.Entidade
         public Status Estado { get; set; }
         public bool Favorito{ get; set; }
 
-        public List<string> IdEpConcluidos { get; private set; }
+        public List<Episodio> IdEpConcluidos { get; private set; }
 
         public Programar(Programa programa)
         {
@@ -27,9 +27,12 @@ namespace TVOrganizer.Entidade
 
             if (programa is Série)
             {
-                IdEpConcluidos = new List<string>();
+                Série serie = programa as Série;
+                IdEpConcluidos = new List<Episodio>(serie.Episodios);
             }
+
         }
+
 
         public void ConcluirPrograma()
         {
@@ -42,13 +45,43 @@ namespace TVOrganizer.Entidade
             {
                 Série? serie = Programa as Série;
                 Episodio? ep = serie.Episodios.Find(x => x.Titulo == episodio.Titulo);
-                IdEpConcluidos.Add(ep.ConferirEpisodio());
+                try
+                {
+                    IdEpConcluidos.Add(ep);
+                }
+                catch (ArgumentNullException e)
+                {
+                }
+
+                //Organiza os episódios da lista de concluídos
+                try
+                {
+
+                }
+
             }
             else
             {
                 //Alterar a exceção
                 throw new Exception();
             }
-        } 
+        }
+
+        public void ProgramarAssistir(Episodio episodio)
+        {
+            Estado = Status.Assistindo;
+        }
+
+        public string VerificarEpisodiosConcluidos()
+        {
+            if (Programa is not Série)
+            {
+                throw new Exception();
+            }
+            else
+            {
+                
+            }
+        }
     }
 }

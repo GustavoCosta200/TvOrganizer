@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Refit;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,7 +32,7 @@ namespace TVOrganizer.Entidade
 
         public string ConferirEpisodio()
         {
-            return Temporada + "/" + Num
+            return Temporada + "/" + Num;
         }
     }
 }

@@ -13,8 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controle\" />
     <Folder Include="Exceptions\" />
+    <Folder Include="APIservices\" />
   </ItemGroup>
 
 </Project>
