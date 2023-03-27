@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace TVOrganizer.Fronteira
 {
-    public partial class F_TelaProgramas : Form
+    public partial class frmTelaProgramas : Form
     {
-        public F_TelaProgramas()
+        public frmTelaProgramas()
         {
             InitializeComponent();
+        }
+
+        private void F_TelaProgramas_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

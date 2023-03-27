@@ -16,21 +16,15 @@ namespace TVOrganizer.Entidade
         public double Nota { get; set; }
         public string Comentario { get; set; }
         public Status Estado { get; set; }
-        public bool Favorito{ get; set; }
-
+        public bool Favorito { get; set; }
         public List<Episodio> IdEpConcluidos { get; private set; }
 
         public Programar(Programa programa)
         {
             Programa = programa;
             Favorito = false;
-
-            if (programa is Série)
-            {
-                Série serie = programa as Série;
-                IdEpConcluidos = new List<Episodio>(serie.Episodios);
-            }
-
+            Série serie = programa as Série;
+            IdEpConcluidos = new List<Episodio>(serie.Episodios);
         }
 
 
@@ -54,10 +48,7 @@ namespace TVOrganizer.Entidade
                 }
 
                 //Organiza os episódios da lista de concluídos
-                try
-                {
 
-                }
 
             }
             else
@@ -80,7 +71,7 @@ namespace TVOrganizer.Entidade
             }
             else
             {
-                
+                return "1";
             }
         }
     }

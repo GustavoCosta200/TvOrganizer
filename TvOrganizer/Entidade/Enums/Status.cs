@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace TVOrganizer.Entidade.Enums
 {
-    enum Status : int
+    internal enum Status : int
     {
-        Concluido = 0, 
+        Concluido = 0,
         Assistindo = 1,
-        Programado = 2, 
+        Programado = 2,
     }
 }

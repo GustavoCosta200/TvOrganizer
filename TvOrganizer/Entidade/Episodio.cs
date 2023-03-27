@@ -11,7 +11,7 @@ namespace TVOrganizer.Entidade
     {
         public string Titulo { get; set; }
         public string Duração { get; set; }
-        public string Descrição { get; set;}
+        public string Descrição { get; set; }
         public string Temporada { get; set; }
         public string Num { get; set; }
 

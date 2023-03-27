@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TVOrganizer.Entidade
 {
-    abstract class Programa
+    internal abstract class Programa
     {
         public string Nome { get; set; }
         public string Sinopse { get; set; }
@@ -18,7 +18,7 @@ namespace TVOrganizer.Entidade
 
         public Programa() { }
 
-        public Programa(string nome, string sinopse, DateTime datLancamento, string nota, string imagem, string genero, params Celebridade[] celebridades) 
+        public Programa(string nome, string sinopse, DateTime datLancamento, string nota, string imagem, string genero, params Celebridade[] celebridades)
         {
             Nome = nome;
             Sinopse = sinopse;
@@ -34,7 +34,7 @@ namespace TVOrganizer.Entidade
                 Celebridades.Add(celebridades[i]);
             }
         }
-        
+
         public bool VerificarInformações(string nome)
         {
             if (nome == Nome) { return true; } else { return false; }

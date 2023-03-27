@@ -16,5 +16,10 @@ namespace TVOrganizer.Fronteira
         {
             InitializeComponent();
         }
+
+        private void F_ProgramaConcluido_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

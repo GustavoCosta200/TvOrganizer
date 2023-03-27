@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TVOrganizer.Entidade
 {
-    internal class Série: Programa
+    internal class Série : Programa
     {
         public int Nepisodios { get; set; }
         public bool Finalizada { get; set; }

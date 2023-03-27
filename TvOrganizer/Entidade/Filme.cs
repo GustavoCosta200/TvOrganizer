@@ -8,8 +8,8 @@ namespace TVOrganizer.Entidade
 {
     internal class Filme : Programa
     {
-        public string Duração{ get; set; }
-        public string Tipo { get; set;}
+        public string Duração { get; set; }
+        public string Tipo { get; set; }
 
         public Filme() { }
 

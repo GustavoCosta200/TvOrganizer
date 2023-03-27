@@ -7,19 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TVOrganizer.Controle;
 
 namespace TVOrganizer.Fronteira
 {
-    public partial class F_Assistindo : Form
+    public partial class frmAssistindo : Form
     {
-        public F_Assistindo()
+        public frmAssistindo()
         {
             InitializeComponent();
+            CarregarProgramas();
         }
 
         private void F_Assistindo_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CarregarProgramas()
+        {
+            dgvProgramas.DataSource = C_Assistindo.retornarProgramados;
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            frmTelaProgramas fr = new frmTelaProgramas();
+            fr.ShowDialog();
         }
     }
 }
