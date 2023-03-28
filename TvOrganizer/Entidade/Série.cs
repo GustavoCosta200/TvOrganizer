@@ -8,11 +8,17 @@ namespace TVOrganizer.Entidade
 {
     internal class Série : Programa
     {
-        public int Nepisodios { get; set; }
-        public bool Finalizada { get; set; }
-        public List<Episodio> Episodios { get; set; }
+        public int? Nepisodios { get; set; }
+        public bool? Finalizada { get; set; }
+        public List<Episodio>? Episodios { get; set; }
 
-        public Série(int nepisodios, bool finalizada, params Episodio[] episodios)
+        public Série(string nome, string sinopse, string dataLancamento, int id) :
+            base(nome, sinopse, dataLancamento, id)
+        {
+        }
+
+        public Série(string nome, string sinopse, string dataLancamento, int id, int[] gênero, int nepisodios, bool finalizada, params Episodio[] episodios) : 
+            base (nome, sinopse, dataLancamento, id, gênero)
         {
             Nepisodios = nepisodios;
             Finalizada = finalizada;

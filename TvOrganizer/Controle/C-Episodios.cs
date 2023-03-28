@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace TVOrganizer.Controle
 {
-    internal class C_Episodioscs
+    internal class C_Episodio
     {
+        
     }
 }

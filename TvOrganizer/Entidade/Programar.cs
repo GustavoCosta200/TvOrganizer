@@ -11,13 +11,13 @@ namespace TVOrganizer.Entidade
     internal class Programar
     {
         public Programa Programa { get; set; }
-        public DateTime Data { get; set; }
-        public DateTime Hora { get; set; }
-        public double Nota { get; set; }
-        public string Comentario { get; set; }
-        public Status Estado { get; set; }
-        public bool Favorito { get; set; }
-        public List<Episodio> IdEpConcluidos { get; private set; }
+        public DateTime? Data { get; set; }
+        public DateTime? Hora { get; set; }
+        public double? Nota { get; set; }
+        public string? Comentario { get; set; }
+        public Status? Estado { get; set; }
+        public bool? Favorito { get; set; }
+        public List<Episodio>? IdEpConcluidos { get; private set; }
 
         public Programar(Programa programa)
         {

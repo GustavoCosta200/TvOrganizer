@@ -51,6 +51,27 @@ namespace TvOrganizer.Serializadores
             {  
             }
         }
+        //Serializa uma lista de usuários
+        public static void SerializarUsuario(List<Usuário> usuarios)
+        {
+            try
+            {
+                try
+                {
+                    using (StreamWriter sw = new StreamWriter(Caminho))
+                    {
+                        JsonSerializer jsonSerializer = new JsonSerializer();
+                        jsonSerializer.Serialize(sw, usuarios);
+                    }
+                }
+                catch (NullReferenceException error)
+                {
+                }
+            }
+            catch (IOException)
+            {
+            }
+        }
         //Retorna usuários desserializados
         public static List<Usuário> DesserializarUsuários()
         {

@@ -9,11 +9,11 @@ namespace TVOrganizer.Entidade
 {
     internal class Episodio
     {
-        public string Titulo { get; set; }
-        public string Duração { get; set; }
-        public string Descrição { get; set; }
-        public string Temporada { get; set; }
-        public string Num { get; set; }
+        public string? Titulo { get; set; }
+        public string? Duração { get; set; }
+        public string? Descrição { get; set; }
+        public string? Temporada { get; set; }
+        public string? Num { get; set; }
 
         public Episodio() { }
         public Episodio(string titulo, string duração, string descrição, string temporada, string num)

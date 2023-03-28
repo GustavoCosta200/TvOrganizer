@@ -8,12 +8,19 @@ namespace TVOrganizer.Entidade
 {
     internal class Celebridade
     {
-        public string Nome { get; set; }
-        public string Idade { get; set; }
-        public string Funcao { get; set; }
-        public string Foto { get; set; }
-        public int Id { get; set; }
-        public List<Programa> Programas { get; set; }
+        public string? Nome { get; set; }
+        public string? Idade { get; set; }
+        public string? Funcao { get; set; }
+        public string? Foto { get; set; }
+        public int? Id { get; set; }
+        public List<Programa>? Programas { get; set; }
+
+        public Celebridade(string? nome, int? id)
+        {
+            Nome = nome;
+            Id = id;
+
+        }
 
         public Celebridade(string nome, string idade, string funcao, string foto, int id, params Programa[] programas)
         {

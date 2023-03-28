@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle7 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle8 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle9 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle10 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle11 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle12 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvProgramas = new DataGridView();
             Título = new DataGridViewTextBoxColumn();
             ProxEpisodio = new DataGridViewTextBoxColumn();
@@ -51,17 +51,17 @@
             // 
             dgvProgramas.AllowUserToAddRows = false;
             dgvProgramas.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle7.BackColor = Color.Silver;
-            dgvProgramas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
+            dataGridViewCellStyle1.BackColor = Color.Silver;
+            dgvProgramas.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             dgvProgramas.BackgroundColor = SystemColors.ActiveCaption;
-            dataGridViewCellStyle8.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle8.BackColor = SystemColors.Control;
-            dataGridViewCellStyle8.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            dataGridViewCellStyle8.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle8.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle8.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle8.WrapMode = DataGridViewTriState.True;
-            dgvProgramas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.Control;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvProgramas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProgramas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvProgramas.Columns.AddRange(new DataGridViewColumn[] { Título, ProxEpisodio, DataProgramada, HoraProgramada });
             dgvProgramas.Location = new Point(11, 95);
@@ -78,9 +78,9 @@
             // 
             Título.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Título.DataPropertyName = "Nome";
-            dataGridViewCellStyle9.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle9.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            Título.DefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            Título.DefaultCellStyle = dataGridViewCellStyle3;
             Título.HeaderText = "Título";
             Título.MinimumWidth = 6;
             Título.Name = "Título";
@@ -89,8 +89,8 @@
             // 
             ProxEpisodio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             ProxEpisodio.DataPropertyName = "Episódio";
-            dataGridViewCellStyle10.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ProxEpisodio.DefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ProxEpisodio.DefaultCellStyle = dataGridViewCellStyle4;
             ProxEpisodio.FillWeight = 36.02498F;
             ProxEpisodio.HeaderText = "Próximo Episódio";
             ProxEpisodio.MinimumWidth = 6;
@@ -100,8 +100,8 @@
             // 
             DataProgramada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DataProgramada.DataPropertyName = "Data";
-            dataGridViewCellStyle11.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DataProgramada.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataProgramada.DefaultCellStyle = dataGridViewCellStyle5;
             DataProgramada.FillWeight = 36.02498F;
             DataProgramada.HeaderText = "Data Programada";
             DataProgramada.MinimumWidth = 6;
@@ -111,8 +111,8 @@
             // 
             HoraProgramada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             HoraProgramada.DataPropertyName = "Hora";
-            dataGridViewCellStyle12.Alignment = DataGridViewContentAlignment.BottomCenter;
-            HoraProgramada.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.BottomCenter;
+            HoraProgramada.DefaultCellStyle = dataGridViewCellStyle6;
             HoraProgramada.FillWeight = 36.02498F;
             HoraProgramada.HeaderText = "Hora Programada";
             HoraProgramada.MinimumWidth = 6;
@@ -137,6 +137,7 @@
             btnInfo.TabIndex = 2;
             btnInfo.Text = "Ver Informações";
             btnInfo.UseVisualStyleBackColor = true;
+            btnInfo.Click += btnInfo_Click;
             // 
             // btnProgramar
             // 

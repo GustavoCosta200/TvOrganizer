@@ -14,7 +14,7 @@ namespace TvOrganizer.Entidade
         public string Senha { get; private set; }
         public DateTime DataCriacao { get; private set; }
         public string Email { get; private set; }
-        public List<Programar> programasSalvos { get; private set; }
+        public List<Programar>? programasSalvos { get; private set; }
         public Usuário(string nome, string senha, string email)
         {
             Nome = nome;

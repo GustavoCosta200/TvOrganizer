@@ -45,5 +45,10 @@ namespace TVOrganizer.Fronteira
             frmTelaProgramas fr = new frmTelaProgramas();
             fr.ShowDialog();
         }
+
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

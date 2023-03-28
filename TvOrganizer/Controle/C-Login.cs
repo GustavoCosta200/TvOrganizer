@@ -40,6 +40,22 @@ namespace TVOrganizer.Controle
             
             return false;
         }
+
+        public static void SalvarAlterações()
+        {
+            List<Usuário> ListaUsuários = UserSerialization.DesserializarUsuários();
+
+            foreach (Usuário user in ListaUsuários)
+            {
+                if (user == usuário)
+                {
+                    ListaUsuários.Remove(user);
+                    ListaUsuários.Add(usuário);
+                    UserSerialization.SerializarUsuario(ListaUsuários);
+                    return;
+                }
+            }
+        }
         
     }
 }
