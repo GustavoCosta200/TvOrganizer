@@ -54,7 +54,7 @@
             // 
             ptbPoster.Location = new Point(179, 12);
             ptbPoster.Name = "ptbPoster";
-            ptbPoster.Size = new Size(324, 249);
+            ptbPoster.Size = new Size(324, 295);
             ptbPoster.SizeMode = PictureBoxSizeMode.CenterImage;
             ptbPoster.TabIndex = 0;
             ptbPoster.TabStop = false;
@@ -63,7 +63,7 @@
             // 
             lblTítulo.AutoEllipsis = true;
             lblTítulo.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            lblTítulo.Location = new Point(9, 264);
+            lblTítulo.Location = new Point(9, 310);
             lblTítulo.Name = "lblTítulo";
             lblTítulo.Size = new Size(669, 48);
             lblTítulo.TabIndex = 1;
@@ -74,7 +74,7 @@
             // label1
             // 
             label1.BorderStyle = BorderStyle.FixedSingle;
-            label1.Location = new Point(0, 303);
+            label1.Location = new Point(0, 358);
             label1.Name = "label1";
             label1.Size = new Size(678, 1);
             label1.TabIndex = 2;
@@ -82,18 +82,18 @@
             // lblSinopse
             // 
             lblSinopse.AutoEllipsis = true;
-            lblSinopse.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            lblSinopse.Location = new Point(18, 325);
+            lblSinopse.Font = new Font("Segoe UI Semibold", 8F, FontStyle.Bold, GraphicsUnit.Point);
+            lblSinopse.Location = new Point(18, 359);
             lblSinopse.Name = "lblSinopse";
-            lblSinopse.Size = new Size(650, 56);
+            lblSinopse.Size = new Size(650, 111);
             lblSinopse.TabIndex = 3;
-            lblSinopse.Text = "label2";
             lblSinopse.TextAlign = ContentAlignment.TopCenter;
+            lblSinopse.Click += lblSinopse_Click;
             // 
             // label2
             // 
             label2.BorderStyle = BorderStyle.FixedSingle;
-            label2.Location = new Point(0, 403);
+            label2.Location = new Point(0, 469);
             label2.Name = "label2";
             label2.Size = new Size(678, 1);
             label2.TabIndex = 4;
@@ -107,12 +107,13 @@
             gbInfo.Controls.Add(lblNota);
             gbInfo.Controls.Add(lblDataLançamento);
             gbInfo.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            gbInfo.Location = new Point(18, 407);
+            gbInfo.Location = new Point(18, 482);
             gbInfo.Name = "gbInfo";
             gbInfo.Size = new Size(521, 194);
             gbInfo.TabIndex = 5;
             gbInfo.TabStop = false;
             gbInfo.Text = "Informações";
+            gbInfo.Enter += gbInfo_Enter;
             // 
             // lblStatus
             // 
@@ -141,6 +142,7 @@
             lblNumEp.Size = new Size(182, 23);
             lblNumEp.TabIndex = 3;
             lblNumEp.Text = "Número de Episódios: ";
+            lblNumEp.Click += lblNumEp_Click;
             // 
             // lblDuração
             // 
@@ -175,7 +177,7 @@
             // 
             ltbGêneros.FormattingEnabled = true;
             ltbGêneros.ItemHeight = 20;
-            ltbGêneros.Location = new Point(545, 457);
+            ltbGêneros.Location = new Point(545, 532);
             ltbGêneros.Name = "ltbGêneros";
             ltbGêneros.Size = new Size(123, 144);
             ltbGêneros.TabIndex = 7;
@@ -184,7 +186,7 @@
             // 
             lblGêneros.AutoSize = true;
             lblGêneros.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lblGêneros.Location = new Point(545, 422);
+            lblGêneros.Location = new Point(545, 482);
             lblGêneros.Name = "lblGêneros";
             lblGêneros.Size = new Size(73, 23);
             lblGêneros.TabIndex = 8;
@@ -192,7 +194,7 @@
             // 
             // btnVoltar
             // 
-            btnVoltar.Location = new Point(18, 637);
+            btnVoltar.Location = new Point(18, 699);
             btnVoltar.Name = "btnVoltar";
             btnVoltar.Size = new Size(118, 35);
             btnVoltar.TabIndex = 9;
@@ -202,7 +204,7 @@
             // 
             // btnEpisódios
             // 
-            btnEpisódios.Location = new Point(179, 637);
+            btnEpisódios.Location = new Point(179, 699);
             btnEpisódios.Name = "btnEpisódios";
             btnEpisódios.Size = new Size(118, 35);
             btnEpisódios.TabIndex = 10;
@@ -211,7 +213,7 @@
             // 
             // btnConcluido
             // 
-            btnConcluido.Location = new Point(334, 637);
+            btnConcluido.Location = new Point(348, 699);
             btnConcluido.Name = "btnConcluido";
             btnConcluido.Size = new Size(145, 35);
             btnConcluido.TabIndex = 11;
@@ -220,18 +222,19 @@
             // 
             // btnAssistir
             // 
-            btnAssistir.Location = new Point(523, 637);
+            btnAssistir.Location = new Point(523, 699);
             btnAssistir.Name = "btnAssistir";
             btnAssistir.Size = new Size(145, 35);
             btnAssistir.TabIndex = 12;
             btnAssistir.Text = "Marcar Assistir";
             btnAssistir.UseVisualStyleBackColor = true;
+            btnAssistir.Click += btnAssistir_Click;
             // 
             // frmPrograma
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(680, 684);
+            ClientSize = new Size(680, 746);
             Controls.Add(btnAssistir);
             Controls.Add(btnConcluido);
             Controls.Add(btnEpisódios);
@@ -246,7 +249,7 @@
             Controls.Add(ptbPoster);
             MaximizeBox = false;
             Name = "frmPrograma";
-            StartPosition = FormStartPosition.CenterParent;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "F_Programa";
             Load += frmPrograma_Load;
             ((System.ComponentModel.ISupportInitialize)ptbPoster).EndInit();

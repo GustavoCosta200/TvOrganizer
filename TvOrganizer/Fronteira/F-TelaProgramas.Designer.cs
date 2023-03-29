@@ -43,6 +43,10 @@
             imageList1 = new ImageList(components);
             cbbTipos = new ComboBox();
             nudPágina = new NumericUpDown();
+            btnAssistindo = new Button();
+            btnConcluído = new Button();
+            btnFavorito = new Button();
+            btnVerInformações = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvTelaProgramas).BeginInit();
             ((System.ComponentModel.ISupportInitialize)nudPágina).BeginInit();
             SuspendLayout();
@@ -184,17 +188,61 @@
             nudPágina.Value = new decimal(new int[] { 1, 0, 0, 0 });
             nudPágina.ValueChanged += nudPágina_ValueChanged;
             // 
+            // btnAssistindo
+            // 
+            btnAssistindo.Location = new Point(602, 682);
+            btnAssistindo.Name = "btnAssistindo";
+            btnAssistindo.Size = new Size(144, 49);
+            btnAssistindo.TabIndex = 5;
+            btnAssistindo.Text = "Menu Assistindo";
+            btnAssistindo.UseVisualStyleBackColor = true;
+            btnAssistindo.Click += btnAssistindo_Click;
+            // 
+            // btnConcluído
+            // 
+            btnConcluído.Location = new Point(319, 682);
+            btnConcluído.Name = "btnConcluído";
+            btnConcluído.Size = new Size(140, 49);
+            btnConcluído.TabIndex = 6;
+            btnConcluído.Text = "Menu Concluído";
+            btnConcluído.UseVisualStyleBackColor = true;
+            btnConcluído.Click += btnConcluído_Click;
+            // 
+            // btnFavorito
+            // 
+            btnFavorito.Location = new Point(56, 682);
+            btnFavorito.Name = "btnFavorito";
+            btnFavorito.Size = new Size(135, 49);
+            btnFavorito.TabIndex = 7;
+            btnFavorito.Text = "Menu Favorito";
+            btnFavorito.UseVisualStyleBackColor = true;
+            // 
+            // btnVerInformações
+            // 
+            btnVerInformações.Location = new Point(904, 682);
+            btnVerInformações.Name = "btnVerInformações";
+            btnVerInformações.Size = new Size(124, 49);
+            btnVerInformações.TabIndex = 8;
+            btnVerInformações.Text = "Ver Informações";
+            btnVerInformações.UseVisualStyleBackColor = true;
+            btnVerInformações.Click += btnVerInformações_Click;
+            // 
             // frmTelaProgramas
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1095, 729);
+            ClientSize = new Size(1095, 743);
+            Controls.Add(btnVerInformações);
+            Controls.Add(btnFavorito);
+            Controls.Add(btnConcluído);
+            Controls.Add(btnAssistindo);
             Controls.Add(nudPágina);
             Controls.Add(cbbTipos);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisa);
             Controls.Add(lblProgramas);
             Controls.Add(dgvTelaProgramas);
+            MaximizeBox = false;
             Name = "frmTelaProgramas";
             StartPosition = FormStartPosition.CenterParent;
             Text = "F_TelaProgramas";
@@ -218,5 +266,9 @@
         private DataGridViewTextBoxColumn Sinopse;
         private DataGridViewTextBoxColumn DataLançamento;
         private DataGridViewTextBoxColumn Duração;
+        private Button btnAssistindo;
+        private Button btnConcluído;
+        private Button btnFavorito;
+        private Button btnVerInformações;
     }
 }

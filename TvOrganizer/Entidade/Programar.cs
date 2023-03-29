@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
@@ -10,23 +11,41 @@ namespace TVOrganizer.Entidade
 {
     internal class Programar
     {
+        [JsonProperty("Programa")]
         public Programa Programa { get; set; }
+        [JsonProperty("Data")]
         public DateTime? Data { get; set; }
+        [JsonProperty("Hora")]
         public DateTime? Hora { get; set; }
+        [JsonProperty("Nota")]
         public double? Nota { get; set; }
+        [JsonProperty("Comentario")]
         public string? Comentario { get; set; }
+        [JsonProperty("Estado")]
         public Status? Estado { get; set; }
+        [JsonProperty("Favorito")]
         public bool? Favorito { get; set; }
+        [JsonProperty("IdEpConcluidos")]
         public List<Episodio>? IdEpConcluidos { get; private set; }
+
+        public Programar() { }
 
         public Programar(Programa programa)
         {
             Programa = programa;
             Favorito = false;
-            Série serie = programa as Série;
-            IdEpConcluidos = new List<Episodio>(serie.Episodios);
+            if (programa is Série)
+            {
+                Série serie = programa as Série;
+                IdEpConcluidos = new List<Episodio>(serie.Episodios);
+            }
+
         }
 
+        public Programar(Programa programa, Status? estado) : this(programa)
+        {
+            Estado = estado;
+        }
 
         public void ConcluirPrograma()
         {

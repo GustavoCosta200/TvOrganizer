@@ -8,13 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace TVOrganizer.Fronteira
+namespace TvOrganizer.Fronteira
 {
-    public partial class frmCelebridade : Form
+    public partial class F_Calendario : Form
     {
-        public frmCelebridade()
+        public F_Calendario()
         {
             InitializeComponent();
+        }
+
+        private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

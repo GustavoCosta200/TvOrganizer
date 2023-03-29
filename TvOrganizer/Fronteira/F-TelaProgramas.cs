@@ -28,6 +28,7 @@ namespace TVOrganizer.Fronteira
 
         private void F_TelaProgramas_Load(object sender, EventArgs e)
         {
+            //Carregamento inicial da tabela
             cbbTipos.SelectedItem = "Filme";
             tipoPesquisado = "Filme";
             CarregarProgramasPopulares();
@@ -49,6 +50,7 @@ namespace TVOrganizer.Fronteira
 
         private void Carregar()
         {
+            //Carrega de acordo com o tipo selecionado na tabela e seta esse tipo na variável de controle
             if (cbbTipos.Text == "Filme")
             {
                 CarregarFilmes();
@@ -59,15 +61,10 @@ namespace TVOrganizer.Fronteira
                 CarregarSérie();
                 tipoPesquisado = "Série";
             }
-            else if (cbbTipos.Text == "Celebridade")
-            {
-                CarregarPessoa();
-            }
         }
 
         private async void CarregarProgramasPopulares()
         {
-
             try
             {
                 //Pedido à API para filmes populares
@@ -139,45 +136,12 @@ namespace TVOrganizer.Fronteira
             }
         }
 
-        private async void CarregarPessoa()
-        {
-            try
-            {
-                //Pedido à API para pessoas populares
-                var personRequest = RestService.For<ISearchPerson>("https://api.themoviedb.org");
-                var personList = await personRequest.GetAdressAsync(txtPesquisa.Text.Trim(), nudPágina.Value.ToString());
-                dynamic persons = JsonConvert.DeserializeObject(personList);
-
-                int pageMax = persons.total_pages;
-
-                nudPágina.Maximum = pageMax;
-                PreencherCamposPessoas(persons);
-            }
-            catch (ArgumentOutOfRangeException)
-            {
-            }
-            catch (IOException)
-            {
-
-            }
-        }
 
         private void PreencherCamposFilmes(dynamic movies)
         {
             var results = movies.results;
-
-            List<Programa> respProgramas = new List<Programa>();
-
-            foreach (var item in results)
-            {
-                string title = item.title;
-                string overview = item.overview;
-                string release_date = item.release_date;
-                int id = item.id;
-                int[] genres = item.genres;
-
-                respProgramas.Add(new Filme(title, overview, release_date, id, genres));
-            }
+            //Preenche os campos da tabela com classes programas geradas
+            var respProgramas = C_Programa.RetornarFilmes(results);
 
             dgvTelaProgramas.DataSource = respProgramas;
             dgvTelaProgramas.AutoGenerateColumns = false;
@@ -188,38 +152,13 @@ namespace TVOrganizer.Fronteira
         private void PreencherCamposSeries(dynamic series)
         {
             var results = series.results;
-            List<Programa> respProgramas = new List<Programa>();
-            foreach (var item in results)
-            {
-                string title = item.name;
-                string overview = item.overview;
-                string release_date = item.first_air_date;
-                int id = item.id;
 
-                respProgramas.Add(new Série(title, overview, release_date, id));
-            }
+            var respProgramas = C_Programa.RetornarSéries(results);
 
             dgvTelaProgramas.DataSource = respProgramas;
             dgvTelaProgramas.AutoGenerateColumns = false;
             dgvTelaProgramas.Refresh();
             FormatarColunas();
-        }
-
-        private void PreencherCamposPessoas(dynamic pessoas)
-        {
-            var results = pessoas.results;
-            List<Celebridade> respProgramas = new List<Celebridade>();
-            foreach (var item in results)
-            {
-                string title = item.name;
-                int id = item.id;
-                respProgramas.Add(new Celebridade(title, id));
-            }
-
-            dgvTelaProgramas.DataSource = respProgramas;
-            dgvTelaProgramas.AutoGenerateColumns = true;
-            dgvTelaProgramas.Refresh();
-            FormatarColunasPessoas();
         }
 
         private void FormatarColunas()
@@ -235,15 +174,6 @@ namespace TVOrganizer.Fronteira
             //dgvTelaProgramas.Columns["Tipo"].Visible = false;
         }
 
-        private void FormatarColunasPessoas()
-        {
-            dgvTelaProgramas.Columns["Nome"].Visible = true;
-            dgvTelaProgramas.Columns["Idade"].Visible = false;
-            dgvTelaProgramas.Columns["Funcao"].Visible = false;
-            dgvTelaProgramas.Columns["Foto"].Visible = false;
-            dgvTelaProgramas.Columns["Programas"].Visible = false;
-            dgvTelaProgramas.Columns["Id"].Visible = true;
-        }
 
         private void nudPágina_ValueChanged(object sender, EventArgs e)
         {
@@ -265,6 +195,16 @@ namespace TVOrganizer.Fronteira
 
         private void dgvTelaProgramas_DoubleClick(object sender, EventArgs e)
         {
+            VerInformações();
+        }
+
+        private void btnVerInformações_Click(object sender, EventArgs e)
+        {
+            VerInformações();
+        }
+
+        private void VerInformações()
+        {
             DataGridViewRow linhaSelecionada = dgvTelaProgramas.SelectedRows[0];
             if (this.tipoPesquisado == "Filme")
             {
@@ -277,7 +217,21 @@ namespace TVOrganizer.Fronteira
 
             frmPrograma frmprograma = new frmPrograma();
             frmprograma.CarregarDadosPrograma(ProgramaSelecionado);
-            frmprograma.ShowDialog();
+            frmprograma.Show();
+            this.Hide();
+        }
+
+        private void btnAssistindo_Click(object sender, EventArgs e)
+        {
+            frmAssistindo frmAssistindo = new frmAssistindo();
+            frmAssistindo.Show();
+            this.Hide();
+        }
+
+        private void btnConcluído_Click(object sender, EventArgs e)
+        {
+            frmProgramaConcluido frm = new frmProgramaConcluido();
+            frm.Show();
             this.Hide();
         }
     }

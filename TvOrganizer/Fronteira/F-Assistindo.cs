@@ -8,20 +8,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using TVOrganizer.Controle;
+using TVOrganizer.Entidade;
 
 namespace TVOrganizer.Fronteira
 {
     public partial class frmAssistindo : Form
     {
+        internal List<Programar> programados = null;
         public frmAssistindo()
         {
             InitializeComponent();
-            CarregarProgramas();
         }
 
         private void F_Assistindo_Load(object sender, EventArgs e)
         {
-
+            CarregarProgramas();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -31,7 +32,9 @@ namespace TVOrganizer.Fronteira
 
         private void CarregarProgramas()
         {
-            dgvProgramas.DataSource = C_Assistindo.retornarProgramados;
+            List<Programar> programasCarregados = C_Assistindo.retornarProgramados();
+            programados = programasCarregados;
+            FormatarColunas(programasCarregados);
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -50,5 +53,45 @@ namespace TVOrganizer.Fronteira
         {
 
         }
+        private void FormatarColunas(List<Programar> dados)
+        {
+            foreach (Programar programar in dados)
+            {
+                string tipo = programar.IdEpConcluidos == null ? "Filme" : "Série";
+                string[] linha = { programar.Programa.Nome, tipo, programar.Data.ToString(), programar.Hora.ToString() };
+                dgvProgramas.Rows.Add(linha);
+
+            }
+        }
+
+        private void btnProgramar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow linhaSelecionada = dgvProgramas.SelectedRows[0];
+            int index = linhaSelecionada.Index;
+            Programar programar = programados[index];
+
+        }
+
+        private void btnMarcarConcluido_Click(object sender, EventArgs e)
+        {
+            if (!(Confirmar("Deseja marcar este programa como concluído?")))
+            {
+                return;
+            }
+            DataGridViewRow linhaSelecionada = dgvProgramas.SelectedRows[0];
+            int index = linhaSelecionada.Index;
+            Programar programar = programados[index];
+
+            C_ProgramaConcluído.ConcluirPrograma(programar);
+
+            dgvProgramas.Refresh();
+        }
+
+        private bool Confirmar(string msg)
+        {
+            return MessageBox.Show(msg, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
+                == DialogResult.Yes;
+        }
     }
+}
 }

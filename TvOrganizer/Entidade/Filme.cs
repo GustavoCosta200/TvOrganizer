@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,15 +9,16 @@ namespace TVOrganizer.Entidade
 {
     internal class Filme : Programa
     {
+        [JsonProperty("Duração")]
         public int Duração { get; set; }
 
         public Filme() { }
 
-        public Filme(string nome, string sinopse, string dataLancamento, int id, int[] gênero) : base(nome, sinopse, dataLancamento, id, gênero)
+        public Filme(string nome, string sinopse, string dataLancamento, int id) : base(nome, sinopse, dataLancamento, id)
         {
         }
 
-        public Filme(string nome, string sinopse, string datLancamento, string nota, string imagem, int[] genero, int duracao, string tipo, string id) : base(nome, sinopse, datLancamento, nota, imagem, genero)
+        public Filme(string nome, string sinopse, string datLancamento, double nota, string imagem, string[] genero, int duracao, int id) : base(nome, sinopse, datLancamento, nota, imagem, genero, id)
         {
             Duração = duracao;
         }
@@ -27,7 +29,7 @@ namespace TVOrganizer.Entidade
                    Nome == filme.Nome &&
                    Sinopse == filme.Sinopse &&
                    DataLancamento == filme.DataLancamento &&
-                   EqualityComparer<int[]>.Default.Equals(Gênero, filme.Gênero) &&
+                   EqualityComparer<string[]>.Default.Equals(Gênero, filme.Gênero) &&
                    Id == filme.Id &&
                    Duração == filme.Duração;
         }

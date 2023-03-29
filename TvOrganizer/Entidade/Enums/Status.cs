@@ -10,6 +10,5 @@ namespace TVOrganizer.Entidade.Enums
     {
         Concluido = 0,
         Assistindo = 1,
-        Programado = 2,
     }
 }

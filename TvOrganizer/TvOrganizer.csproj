@@ -10,6 +10,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="APIControl\IGetImage.cs" />
+    <Compile Remove="Fronteira\F-Calendário.cs" />
+    <Compile Remove="Fronteira\F-Calendário.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove="Fronteira\F-Calendário.resx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Refit" Version="6.3.2" />
     <PackageReference Include="Refit.Newtonsoft.Json" Version="6.3.2" />

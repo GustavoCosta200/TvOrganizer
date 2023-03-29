@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,26 +9,34 @@ namespace TVOrganizer.Entidade
 {
     internal class Série : Programa
     {
+        [JsonProperty("Nepisodios")]
         public int? Nepisodios { get; set; }
-        public bool? Finalizada { get; set; }
+        [JsonProperty("NTemporadas")]
+        public int? NTemporadas { get; set; }
+        [JsonProperty("Status")]
+        public string Status { get; set; }
         public List<Episodio>? Episodios { get; set; }
+
+        public Série() { }
 
         public Série(string nome, string sinopse, string dataLancamento, int id) :
             base(nome, sinopse, dataLancamento, id)
         {
         }
 
-        public Série(string nome, string sinopse, string dataLancamento, int id, int[] gênero, int nepisodios, bool finalizada, params Episodio[] episodios) : 
+
+        public Série(string nome, string sinopse, string dataLancamento, int id, string[] gênero, int nepisodios, int ntemporadas, string finalizada) : 
             base (nome, sinopse, dataLancamento, id, gênero)
         {
             Nepisodios = nepisodios;
-            Finalizada = finalizada;
+            Status = finalizada;
+            NTemporadas = ntemporadas;
             Episodios = new List<Episodio>();
-            //Adiciona os Episódios na lista de Episódios
-            for (int i = 0; i < episodios.Length; i++)
-            {
-                Episodios.Add(episodios[i]);
-            }
+        }
+
+        internal void AddEpisódio(Episodio episodio)
+        {
+            Episodios.Add(episodio);
         }
     }
 }

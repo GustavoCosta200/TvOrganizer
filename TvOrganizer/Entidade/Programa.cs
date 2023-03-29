@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Drawing.Text;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -7,61 +9,77 @@ using System.Threading.Tasks;
 
 namespace TVOrganizer.Entidade
 {
-    internal abstract class Programa
+    internal class Programa
     {
+        [JsonProperty("Nome")]
         public string? Nome { get; set; }
+        [JsonProperty("Sinopse")]
         public string? Sinopse { get; set; }
+        [JsonProperty("DataLancamento")]
         public string? DataLancamento { get; set; }
-        public string? Nota { get; set; }
+        [JsonProperty("Nota")]
+        public double? Nota { get; set; }
+        [JsonProperty("Imagem")]
         public string? Imagem { get; set; }
-        public int[]? Gênero { get; set; }
+        [JsonProperty("Gênero")]
+        public string[]? Gênero { get; set; }
+        [JsonProperty("Id")]
         public int? Id { get; set; }
-        public List<Celebridade>? Celebridades { get; set; }
 
         public Programa() { }
 
-        public Programa(string nome, string sinopse, string dataLancamento, int id, int[] gênero)
+        protected Programa(string? nome, string? sinopse, string? dataLancamento, double? nota)
+        {
+            Nome = nome;
+            Sinopse = sinopse;
+            DataLancamento = dataLancamento;
+            Nota = nota;
+        }
+
+        public Programa(string? nome, string? sinopse, string? dataLancamento, double? nota, string? imagem, string[]? gênero, int? id)
+        {
+            Nome = nome;
+            Sinopse = sinopse;
+            DataLancamento = Convert(dataLancamento);
+            Nota = nota;
+            Imagem = imagem;
+            Gênero = gênero;
+            Id = id;
+        }
+
+        public Programa(string nome, string sinopse, string dataLancamento, int id, string[] gênero)
         {
             Nome = nome;
             Sinopse = sinopse;
             Id = id;
             Gênero = gênero;
+            DataLancamento = Convert(dataLancamento);
+        }
+
+        public Programa(string nome, string sinopse, string dataLancamento, int id)
+        {
+            Nome = nome;
+            Sinopse = sinopse;
+            DataLancamento = Convert(dataLancamento);
+            Id = id;
+
+        }
+
+        private string Convert(string data) 
+        {
             try
             {
-                DateTime data = DateTime.ParseExact(dataLancamento, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-                DataLancamento = data.ToString("dd-MM-yyyy");
-            } catch (ArgumentNullException)
-            {
-                DataLancamento = "01-01-1970";
-            } catch(FormatException)
-            {
-                DataLancamento = "01-01-1970";
+                DateTime dataLancamento = DateTime.ParseExact(data, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                return dataLancamento.ToString("dd-MM-yyyy");
             }
-        }
-
-        public Programa(string nome, string sinopse, string datLancamento, string nota, string imagem, int[] genero, params Celebridade[] celebridades)
-        {
-            Nome = nome;
-            Sinopse = sinopse;
-            DateTime data = DateTime.ParseExact(datLancamento, "yyyy-MM-dd", CultureInfo.InvariantCulture);
-            DataLancamento = data.ToString("dd-MM-yyyy");
-            Nota = nota;
-            Imagem = imagem;
-            Gênero = genero;
-            Celebridades = new List<Celebridade>();
-
-            for (int i = 0; i < celebridades.Length; i++)
+            catch (ArgumentNullException)
             {
-                Celebridades.Add(celebridades[i]);
+                return "-";
             }
-        }
-
-        protected Programa(string nome, string sinopse, string dataLancamento, int id)
-        {
-            Nome = nome;
-            Sinopse = sinopse;
-            DataLancamento = dataLancamento;
-            Id = id;
+            catch (FormatException)
+            {
+                return "-";
+            }
         }
     }
 }

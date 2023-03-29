@@ -26,6 +26,7 @@ namespace TVOrganizer.Controle
                 {
                     if (user.Nome == username && user.Senha == senha)
                     {
+                        usuário = user;
                         return true;
                     }
                     else
@@ -47,7 +48,7 @@ namespace TVOrganizer.Controle
 
             foreach (Usuário user in ListaUsuários)
             {
-                if (user == usuário)
+                if (user.Nome == usuário.Nome)
                 {
                     ListaUsuários.Remove(user);
                     ListaUsuários.Add(usuário);
