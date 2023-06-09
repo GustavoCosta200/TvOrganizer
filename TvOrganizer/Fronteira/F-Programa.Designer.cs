@@ -210,6 +210,7 @@
             btnEpisódios.TabIndex = 10;
             btnEpisódios.Text = "Ver Episódios";
             btnEpisódios.UseVisualStyleBackColor = true;
+            btnEpisódios.Click += btnEpisódios_Click;
             // 
             // btnConcluido
             // 
@@ -219,6 +220,7 @@
             btnConcluido.TabIndex = 11;
             btnConcluido.Text = "Marcar Concluído";
             btnConcluido.UseVisualStyleBackColor = true;
+            btnConcluido.Click += btnConcluido_Click;
             // 
             // btnAssistir
             // 

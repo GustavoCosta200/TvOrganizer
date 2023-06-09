@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,37 +11,43 @@ namespace TVOrganizer.Entidade
     internal class Celebridade
     {
         public string? Nome { get; set; }
-        public string? Idade { get; set; }
-        public string? Funcao { get; set; }
-        public string? Foto { get; set; }
         public int? Id { get; set; }
+        public string? DataNascimento { get; set; }
+        public string? Função { get; set; }
+        public string? LocalNascimento { get; set; }
         public List<Programa>? Programas { get; set; }
 
-        public Celebridade(string? nome, int? id)
+        public Celebridade()
         {
-            Nome = nome;
-            Id = id;
-
         }
 
-        public Celebridade(string nome, string idade, string funcao, string foto, int id, params Programa[] programas)
+        public Celebridade(string nome, int id)
         {
             Nome = nome;
-            Idade = idade;
-            Funcao = funcao;
-            Foto = foto;
             Id = id;
             Programas = new List<Programa>();
-
-            for (int i = 0; i < programas.Length; i++)
-            {
-                Programas.Add(programas[i]);
-            }
         }
 
-        public string VerCelebridade()
+        public Celebridade(string nome, int id, string? dataNascimento, string? função, string? localNascimento) : this(nome, id)
         {
-            return Nome + " - " + Idade + " - " + Funcao;
+            try
+            {
+                DateTime data = DateTime.ParseExact(dataNascimento, "yyyy-MM-dd", CultureInfo.InvariantCulture);
+                DataNascimento =  data.ToString("dd-MM-yyyy");
+            }
+            catch (ArgumentNullException)
+            {
+                DataNascimento = "-";
+            }
+            catch (FormatException)
+            {
+                DataNascimento = "-";
+            }
+            Programas = new List<Programa>();
+            Função = função;
+            LocalNascimento = localNascimento;  
         }
+
     }
-}
+
+} 

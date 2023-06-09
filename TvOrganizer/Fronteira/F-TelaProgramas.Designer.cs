@@ -177,6 +177,7 @@
             cbbTipos.Name = "cbbTipos";
             cbbTipos.Size = new Size(155, 31);
             cbbTipos.TabIndex = 3;
+            cbbTipos.SelectedIndexChanged += cbbTipos_SelectedIndexChanged;
             // 
             // nudPágina
             // 
@@ -190,7 +191,7 @@
             // 
             // btnAssistindo
             // 
-            btnAssistindo.Location = new Point(602, 682);
+            btnAssistindo.Location = new Point(612, 682);
             btnAssistindo.Name = "btnAssistindo";
             btnAssistindo.Size = new Size(144, 49);
             btnAssistindo.TabIndex = 5;
@@ -200,7 +201,7 @@
             // 
             // btnConcluído
             // 
-            btnConcluído.Location = new Point(319, 682);
+            btnConcluído.Location = new Point(323, 682);
             btnConcluído.Name = "btnConcluído";
             btnConcluído.Size = new Size(140, 49);
             btnConcluído.TabIndex = 6;
@@ -216,6 +217,7 @@
             btnFavorito.TabIndex = 7;
             btnFavorito.Text = "Menu Favorito";
             btnFavorito.UseVisualStyleBackColor = true;
+            btnFavorito.Click += btnFavorito_Click;
             // 
             // btnVerInformações
             // 

@@ -24,9 +24,15 @@ namespace TVOrganizer.Entidade
         [JsonProperty("Gênero")]
         public string[]? Gênero { get; set; }
         [JsonProperty("Id")]
-        public int? Id { get; set; }
+        public int Id { get; set; }
 
         public Programa() { }
+
+        public Programa(string? nome, int id)
+        {
+            Nome = nome;
+            Id = id;
+        }
 
         protected Programa(string? nome, string? sinopse, string? dataLancamento, double? nota)
         {
@@ -36,7 +42,7 @@ namespace TVOrganizer.Entidade
             Nota = nota;
         }
 
-        public Programa(string? nome, string? sinopse, string? dataLancamento, double? nota, string? imagem, string[]? gênero, int? id)
+        public Programa(string? nome, string? sinopse, string? dataLancamento, double? nota, string? imagem, string[]? gênero, int id)
         {
             Nome = nome;
             Sinopse = sinopse;

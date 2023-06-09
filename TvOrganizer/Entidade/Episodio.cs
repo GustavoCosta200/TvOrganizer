@@ -28,17 +28,15 @@ namespace TVOrganizer.Entidade
             Descrição = descrição;
             Temporada = temporada;
             Num = num;
-            Id = temporada.ToString() + "/" + num.ToString();
+            Id = num.ToString() + "/" + temporada.ToString();
         }
 
-        public string RetornarInformações()
+        public override bool Equals(object? obj)
         {
-            return Titulo + " - " + Temporada + "/" + Num + " - "  + "\n" + Descrição;
-        }
-
-        public string ConferirEpisodio()
-        {
-            return Temporada + "/" + Num;
+            if (obj == null) return false;
+            if (obj is not Episodio) return false;
+            Episodio other = obj as Episodio;
+            return Id.Equals(other.Id);
         }
     }
 }

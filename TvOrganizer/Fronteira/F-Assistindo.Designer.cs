@@ -35,16 +35,17 @@
             DataGridViewCellStyle dataGridViewCellStyle5 = new DataGridViewCellStyle();
             DataGridViewCellStyle dataGridViewCellStyle6 = new DataGridViewCellStyle();
             dgvProgramas = new DataGridView();
-            Título = new DataGridViewTextBoxColumn();
-            Tipo = new DataGridViewTextBoxColumn();
-            ProxEpisodio = new DataGridViewTextBoxColumn();
-            DataProgramada = new DataGridViewTextBoxColumn();
-            HoraProgramada = new DataGridViewTextBoxColumn();
             lblAssistir = new Label();
             btnProgramar = new Button();
             btnMarcarConcluido = new Button();
             btnMenu = new Button();
             btnEpisódio = new Button();
+            Título = new DataGridViewTextBoxColumn();
+            Sinopse = new DataGridViewTextBoxColumn();
+            Tipo = new DataGridViewTextBoxColumn();
+            DataProgramada = new DataGridViewTextBoxColumn();
+            HoraProgramada = new DataGridViewTextBoxColumn();
+            ProxEpisodio = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)dgvProgramas).BeginInit();
             SuspendLayout();
             // 
@@ -66,8 +67,8 @@
             dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
             dgvProgramas.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvProgramas.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvProgramas.Columns.AddRange(new DataGridViewColumn[] { Título, Tipo, ProxEpisodio, DataProgramada, HoraProgramada });
-            dgvProgramas.Location = new Point(12, 94);
+            dgvProgramas.Columns.AddRange(new DataGridViewColumn[] { Título, Sinopse, Tipo, DataProgramada, HoraProgramada, ProxEpisodio });
+            dgvProgramas.Location = new Point(1, 94);
             dgvProgramas.MultiSelect = false;
             dgvProgramas.Name = "dgvProgramas";
             dgvProgramas.ReadOnly = true;
@@ -77,72 +78,16 @@
             dgvProgramas.RowTemplate.Height = 29;
             dgvProgramas.ScrollBars = ScrollBars.Vertical;
             dgvProgramas.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvProgramas.Size = new Size(783, 419);
+            dgvProgramas.Size = new Size(1036, 470);
             dgvProgramas.TabIndex = 0;
             dgvProgramas.CellContentClick += dataGridView1_CellContentClick;
             dgvProgramas.CellContentDoubleClick += dataGridView1_CellContentClick;
-            // 
-            // Título
-            // 
-            Título.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Título.DataPropertyName = "Nome";
-            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
-            Título.DefaultCellStyle = dataGridViewCellStyle3;
-            Título.HeaderText = "Título";
-            Título.MinimumWidth = 6;
-            Título.Name = "Título";
-            Título.ReadOnly = true;
-            // 
-            // Tipo
-            // 
-            Tipo.HeaderText = "Tipo";
-            Tipo.MinimumWidth = 6;
-            Tipo.Name = "Tipo";
-            Tipo.ReadOnly = true;
-            Tipo.Width = 125;
-            // 
-            // ProxEpisodio
-            // 
-            ProxEpisodio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            ProxEpisodio.DataPropertyName = "Episódio";
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            ProxEpisodio.DefaultCellStyle = dataGridViewCellStyle4;
-            ProxEpisodio.FillWeight = 36.02498F;
-            ProxEpisodio.HeaderText = "Próximo Episódio";
-            ProxEpisodio.MinimumWidth = 6;
-            ProxEpisodio.Name = "ProxEpisodio";
-            ProxEpisodio.ReadOnly = true;
-            // 
-            // DataProgramada
-            // 
-            DataProgramada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DataProgramada.DataPropertyName = "Data";
-            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            DataProgramada.DefaultCellStyle = dataGridViewCellStyle5;
-            DataProgramada.FillWeight = 36.02498F;
-            DataProgramada.HeaderText = "Data Programada";
-            DataProgramada.MinimumWidth = 6;
-            DataProgramada.Name = "DataProgramada";
-            DataProgramada.ReadOnly = true;
-            // 
-            // HoraProgramada
-            // 
-            HoraProgramada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            HoraProgramada.DataPropertyName = "Hora";
-            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.BottomCenter;
-            HoraProgramada.DefaultCellStyle = dataGridViewCellStyle6;
-            HoraProgramada.FillWeight = 36.02498F;
-            HoraProgramada.HeaderText = "Hora Programada";
-            HoraProgramada.MinimumWidth = 6;
-            HoraProgramada.Name = "HoraProgramada";
-            HoraProgramada.ReadOnly = true;
             // 
             // lblAssistir
             // 
             lblAssistir.AutoSize = true;
             lblAssistir.Font = new Font("Segoe UI Semibold", 20F, FontStyle.Bold, GraphicsUnit.Point);
-            lblAssistir.Location = new Point(300, 29);
+            lblAssistir.Location = new Point(382, 26);
             lblAssistir.Name = "lblAssistir";
             lblAssistir.Size = new Size(208, 46);
             lblAssistir.TabIndex = 1;
@@ -151,7 +96,7 @@
             // 
             // btnProgramar
             // 
-            btnProgramar.Location = new Point(626, 551);
+            btnProgramar.Location = new Point(851, 598);
             btnProgramar.Name = "btnProgramar";
             btnProgramar.Size = new Size(150, 30);
             btnProgramar.TabIndex = 3;
@@ -161,7 +106,7 @@
             // 
             // btnMarcarConcluido
             // 
-            btnMarcarConcluido.Location = new Point(422, 551);
+            btnMarcarConcluido.Location = new Point(581, 598);
             btnMarcarConcluido.Name = "btnMarcarConcluido";
             btnMarcarConcluido.Size = new Size(150, 30);
             btnMarcarConcluido.TabIndex = 4;
@@ -171,7 +116,7 @@
             // 
             // btnMenu
             // 
-            btnMenu.Location = new Point(12, 551);
+            btnMenu.Location = new Point(24, 598);
             btnMenu.Name = "btnMenu";
             btnMenu.Size = new Size(150, 30);
             btnMenu.TabIndex = 5;
@@ -181,18 +126,86 @@
             // 
             // btnEpisódio
             // 
-            btnEpisódio.Location = new Point(221, 551);
+            btnEpisódio.Location = new Point(275, 598);
             btnEpisódio.Name = "btnEpisódio";
             btnEpisódio.Size = new Size(150, 30);
             btnEpisódio.TabIndex = 6;
             btnEpisódio.Text = "Concluir Episódio";
             btnEpisódio.UseVisualStyleBackColor = true;
+            btnEpisódio.Click += btnEpisódio_Click;
+            // 
+            // Título
+            // 
+            Título.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Título.DataPropertyName = "Nome";
+            dataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle3.Font = new Font("Microsoft Sans Serif", 7.8F, FontStyle.Bold, GraphicsUnit.Point);
+            Título.DefaultCellStyle = dataGridViewCellStyle3;
+            Título.FillWeight = 150F;
+            Título.HeaderText = "Título";
+            Título.MinimumWidth = 6;
+            Título.Name = "Título";
+            Título.ReadOnly = true;
+            // 
+            // Sinopse
+            // 
+            Sinopse.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Sinopse.FillWeight = 300F;
+            Sinopse.HeaderText = "Sinopse";
+            Sinopse.MinimumWidth = 6;
+            Sinopse.Name = "Sinopse";
+            Sinopse.ReadOnly = true;
+            // 
+            // Tipo
+            // 
+            Tipo.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Tipo.FillWeight = 80F;
+            Tipo.HeaderText = "Tipo";
+            Tipo.MinimumWidth = 6;
+            Tipo.Name = "Tipo";
+            Tipo.ReadOnly = true;
+            // 
+            // DataProgramada
+            // 
+            DataProgramada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            DataProgramada.DataPropertyName = "Data";
+            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            DataProgramada.DefaultCellStyle = dataGridViewCellStyle4;
+            DataProgramada.FillWeight = 80F;
+            DataProgramada.HeaderText = "Data Programada";
+            DataProgramada.MinimumWidth = 6;
+            DataProgramada.Name = "DataProgramada";
+            DataProgramada.ReadOnly = true;
+            // 
+            // HoraProgramada
+            // 
+            HoraProgramada.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            HoraProgramada.DataPropertyName = "Hora";
+            dataGridViewCellStyle5.Alignment = DataGridViewContentAlignment.BottomCenter;
+            HoraProgramada.DefaultCellStyle = dataGridViewCellStyle5;
+            HoraProgramada.FillWeight = 80F;
+            HoraProgramada.HeaderText = "Hora Programada";
+            HoraProgramada.MinimumWidth = 6;
+            HoraProgramada.Name = "HoraProgramada";
+            HoraProgramada.ReadOnly = true;
+            // 
+            // ProxEpisodio
+            // 
+            ProxEpisodio.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            ProxEpisodio.DataPropertyName = "Episódio";
+            dataGridViewCellStyle6.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            ProxEpisodio.DefaultCellStyle = dataGridViewCellStyle6;
+            ProxEpisodio.FillWeight = 80F;
+            ProxEpisodio.HeaderText = "Próximo Episódio";
+            ProxEpisodio.MinimumWidth = 6;
+            ProxEpisodio.Name = "ProxEpisodio";
+            ProxEpisodio.ReadOnly = true;
             // 
             // frmAssistindo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 597);
+            ClientSize = new Size(1037, 640);
             Controls.Add(btnEpisódio);
             Controls.Add(btnMenu);
             Controls.Add(btnMarcarConcluido);
@@ -216,11 +229,12 @@
         private Button btnProgramar;
         private Button btnMarcarConcluido;
         private Button btnMenu;
+        private Button btnEpisódio;
         private DataGridViewTextBoxColumn Título;
+        private DataGridViewTextBoxColumn Sinopse;
         private DataGridViewTextBoxColumn Tipo;
-        private DataGridViewTextBoxColumn ProxEpisodio;
         private DataGridViewTextBoxColumn DataProgramada;
         private DataGridViewTextBoxColumn HoraProgramada;
-        private Button btnEpisódio;
+        private DataGridViewTextBoxColumn ProxEpisodio;
     }
 }

@@ -174,7 +174,7 @@ namespace TVOrganizer.Fronteira
             //dgvTelaProgramas.Columns["Tipo"].Visible = false;
         }
 
-
+        //Atualiza a página com o valor selecionado da caixa
         private void nudPágina_ValueChanged(object sender, EventArgs e)
         {
             if (txtPesquisa.Text.Trim().Length == 0)
@@ -186,7 +186,7 @@ namespace TVOrganizer.Fronteira
                 Carregar();
             }
         }
-
+        //Realiza a pesquisa com o valor na caixa de texto
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
             nudPágina.Value = 1;
@@ -202,7 +202,7 @@ namespace TVOrganizer.Fronteira
         {
             VerInformações();
         }
-
+        //Abre janela de Informações
         private void VerInformações()
         {
             DataGridViewRow linhaSelecionada = dgvTelaProgramas.SelectedRows[0];
@@ -231,6 +231,23 @@ namespace TVOrganizer.Fronteira
         private void btnConcluído_Click(object sender, EventArgs e)
         {
             frmProgramaConcluido frm = new frmProgramaConcluido();
+            frm.Show();
+            this.Hide();
+        }
+
+        private void cbbTipos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cbbTipos.SelectedItem == "Pessoa")
+            {
+                frmCelebridade frm = new frmCelebridade();
+                frm.Show();
+                this.Hide();
+            }
+        }
+
+        private void btnFavorito_Click(object sender, EventArgs e)
+        {
+            frmFavorito frm = new frmFavorito();
             frm.Show();
             this.Hide();
         }

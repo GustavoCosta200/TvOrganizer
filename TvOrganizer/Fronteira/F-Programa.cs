@@ -179,10 +179,29 @@ namespace TVOrganizer.Fronteira
             }
         }
 
+
+
         private bool Confirmar(string msg)
         {
             return MessageBox.Show(msg, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 == DialogResult.Yes;
+        }
+
+        private void btnConcluido_Click(object sender, EventArgs e)
+        {
+            if (Confirmar("Deseja marcar este programa como Concluído?"))
+            {
+                C_ProgramaConcluído.ConcluirPrograma(programa, tipo);
+            }
+        }
+
+        private void btnEpisódios_Click(object sender, EventArgs e)
+        {
+            string name = programa.name;
+            int id = programa.id;
+            frmEpisódios frmEpisódios = new frmEpisódios();
+            frmEpisódios.CarregarDadosInformações(name, id);
+            frmEpisódios.ShowDialog();
         }
     }
 }

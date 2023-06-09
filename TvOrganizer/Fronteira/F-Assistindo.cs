@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TvOrganizer.Fronteira;
 using TVOrganizer.Controle;
 using TVOrganizer.Entidade;
 
@@ -32,6 +33,7 @@ namespace TVOrganizer.Fronteira
 
         private void CarregarProgramas()
         {
+            dgvProgramas.Rows.Clear();
             List<Programar> programasCarregados = C_Assistindo.retornarProgramados();
             programados = programasCarregados;
             FormatarColunas(programasCarregados);
@@ -58,9 +60,18 @@ namespace TVOrganizer.Fronteira
             foreach (Programar programar in dados)
             {
                 string tipo = programar.IdEpConcluidos == null ? "Filme" : "Série";
-                string[] linha = { programar.Programa.Nome, tipo, programar.Data.ToString(), programar.Hora.ToString() };
-                dgvProgramas.Rows.Add(linha);
 
+                if (programar.IdEpConcluidos != null)
+                {
+                    string proxEp = C_Assistindo.RetornarProximoEpisodio(programar);
+                    string[] linha = { programar.Programa.Nome, programar.Programa.Sinopse, tipo, programar.Data, programar.Hora, proxEp };
+                    dgvProgramas.Rows.Add(linha);
+                }
+                else
+                {
+                    string[] linha = { programar.Programa.Nome, programar.Programa.Sinopse, tipo, programar.Data, programar.Hora };
+                    dgvProgramas.Rows.Add(linha);
+                }
             }
         }
 
@@ -70,6 +81,10 @@ namespace TVOrganizer.Fronteira
             int index = linhaSelecionada.Index;
             Programar programar = programados[index];
 
+            frmProgramar frmProgramar = new frmProgramar();
+            frmProgramar.CarregarCampos(programar);
+            frmProgramar.Show();
+            this.Hide();
         }
 
         private void btnMarcarConcluido_Click(object sender, EventArgs e)
@@ -84,7 +99,7 @@ namespace TVOrganizer.Fronteira
 
             C_ProgramaConcluído.ConcluirPrograma(programar);
 
-            dgvProgramas.Refresh();
+            CarregarProgramas();
         }
 
         private bool Confirmar(string msg)
@@ -92,6 +107,27 @@ namespace TVOrganizer.Fronteira
             return MessageBox.Show(msg, "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
                 == DialogResult.Yes;
         }
+
+        private void btnEpisódio_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow linhaSelecionada = dgvProgramas.SelectedRows[0];
+            int index = linhaSelecionada.Index;
+            Programar programar = programados[index];
+
+            if (programar.IdEpConcluidos != null)
+            {
+                frmEpisódios frmEpisódios = new frmEpisódios();
+                frmEpisódios.CarregarDadosAssistindo(programar);
+                frmEpisódios.ShowDialog();
+
+                CarregarProgramas();
+
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma Série!", "Opção Inválida", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
     }
 }
-}
+

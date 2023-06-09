@@ -57,16 +57,45 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <metadata name="imageList1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
+  <data name="imageList1.ImageStream" mimetype="application/x-microsoft.net.object.binary.base64">
+    <value>
+        AAEAAAD/////AQAAAAAAAAAMAgAAAEZTeXN0ZW0uV2luZG93cy5Gb3JtcywgQ3VsdHVyZT1uZXV0cmFs
+        LCBQdWJsaWNLZXlUb2tlbj1iNzdhNWM1NjE5MzRlMDg5BQEAAAAmU3lzdGVtLldpbmRvd3MuRm9ybXMu
+        SW1hZ2VMaXN0U3RyZWFtZXIBAAAABERhdGEHAgIAAAAJAwAAAA8DAAAABAMAAAJNU0Z0AUkBTAMBAQAB
+        WAEAAVgBAAEQAQABEAEABP8BIQEACP8BQgFNATYHAAE2AwABKAMAAUADAAEQAwABAQEAASAGAAEQEgAD
+        UAGaAz0B9ANGAX30AAM9AfQDAAH/AwAB/wNJAYjwAANGAX0DAAH/AwAB/wMAAf8DSQGI8AADSQGIAwAB
+        /wMAAf8DAAH/A0kBiAMiATEDUQGeA1sB4AM0AfcDWQHlA1MBqgMqAT/UAANJAYgDAAH/AwAB/wMAAf8D
+        AAH/AwAB/wNfAdUDWAG6A10B1AMLAf4DAAH/A04BmAMDAQTQAANJAYgDAAH/AwAB/wNaAcQDHwEsDAAD
+        HgEqA1kBwQMAAf8DTwGZ0AADIgExAwAB/wNaAcQDBgEIFAADBQEGA1kBwAMAAf8DKwFBzAADUQGeAwAB
+        /wMfASwcAAMcAScDCwH+A1QBq8wAA1sB4ANfAdUkAANbAdADVgHozAADNAH3A1gBugQAAwkBDBwAA1UB
+        tAMWAfzMAANZAeUDXQHUAw8BEwMfAfoDKwFBGAADXQHOA1IB6cwAA1MBqgMLAf4DHgEqA1YBswNZAeYD
+        LQFGBAIDCwEOAxUBHQQAAxsBJQMWAf0DVQGtzAADKgE/AwAB/wNZAcEDEAEVA1YBsgMAAf8DMQH2AxYB
+        /ANaAccDBAEFA1gBvQMAAf8DLAFD0AADTgGYAwAB/wNZAcADHAEnAyABLgM6AWADNAFUAyUBNwNYAb0D
+        AAH/A1EBntQAAwMBBANPAZkDAAH/AwsB/gNbAdADVQG0A10BzgMWAf0DAAH/A1EBngMEAQXcAAMrAUED
+        VAGrA1YB6AMWAfwDUgHpA1UBrQMsAUPMAAFCAU0BPgcAAT4DAAEoAwABQAMAARADAAEBAQABAQUAAYAX
+        AAP/AQABHwH/BgABDwH/BgABBwH/BgABgAEHBgABwAEBBgAB4AHhBgAB4QHwBgAB4wH4BgAB5wH8BgAB
+        5QH8BgAB4AH8BgAB4AEIBgAB4AcAAfABAQYAAfABAQYAAfwBBwYACw==
+</value>
+  </data>
   <metadata name="Título.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Sinopse.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Função.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="DataLançamento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="Nascimento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <metadata name="Duração.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="LocalNascimento.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
+  </metadata>
+  <metadata name="Programas.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <metadata name="$this.TrayHeight" type="System.Int32, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>25</value>
   </metadata>
 </root>

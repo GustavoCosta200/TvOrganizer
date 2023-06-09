@@ -31,12 +31,11 @@ namespace TVOrganizer.Entidade
             Nepisodios = nepisodios;
             Status = finalizada;
             NTemporadas = ntemporadas;
-            Episodios = new List<Episodio>();
         }
 
-        internal void AddEpisódio(Episodio episodio)
+        internal void AddEpisódio(List<Episodio> episodios)
         {
-            Episodios.Add(episodio);
+            Episodios = episodios;
         }
     }
 }

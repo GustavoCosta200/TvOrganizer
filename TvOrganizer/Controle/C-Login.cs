@@ -29,11 +29,8 @@ namespace TVOrganizer.Controle
                         usuário = user;
                         return true;
                     }
-                    else
-                    {
-                        return false;
-                    }
                 }
+                return false;
             }
             catch(UserNotFoundException)
             {

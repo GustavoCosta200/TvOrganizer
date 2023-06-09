@@ -28,56 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            DataGridViewCellStyle dataGridViewCellStyle3 = new DataGridViewCellStyle();
-            DataGridViewCellStyle dataGridViewCellStyle4 = new DataGridViewCellStyle();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmCelebridade));
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             nudPágina = new NumericUpDown();
-            cbbTipos = new ComboBox();
             btnPesquisar = new Button();
+            imageList1 = new ImageList(components);
             txtPesquisa = new TextBox();
             dgvCelebridadesSearch = new DataGridView();
+            lblCelebridades = new Label();
+            btnVoltar = new Button();
             Título = new DataGridViewTextBoxColumn();
-            Sinopse = new DataGridViewTextBoxColumn();
-            DataLançamento = new DataGridViewTextBoxColumn();
-            Duração = new DataGridViewTextBoxColumn();
+            Função = new DataGridViewTextBoxColumn();
+            Nascimento = new DataGridViewTextBoxColumn();
+            LocalNascimento = new DataGridViewTextBoxColumn();
+            Programas = new DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)nudPágina).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCelebridadesSearch).BeginInit();
             SuspendLayout();
             // 
             // nudPágina
             // 
-            nudPágina.Location = new Point(920, 58);
+            nudPágina.Location = new Point(923, 107);
             nudPágina.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             nudPágina.Name = "nudPágina";
             nudPágina.Size = new Size(158, 27);
             nudPágina.TabIndex = 9;
             nudPágina.Value = new decimal(new int[] { 1, 0, 0, 0 });
-            // 
-            // cbbTipos
-            // 
-            cbbTipos.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            cbbTipos.FormattingEnabled = true;
-            cbbTipos.Items.AddRange(new object[] { "Filme", "Série", "Pessoa" });
-            cbbTipos.Location = new Point(419, 58);
-            cbbTipos.Name = "cbbTipos";
-            cbbTipos.Size = new Size(155, 31);
-            cbbTipos.TabIndex = 8;
+            nudPágina.ValueChanged += nudPágina_ValueChanged;
             // 
             // btnPesquisar
             // 
             btnPesquisar.ForeColor = SystemColors.ControlText;
             btnPesquisar.ImageIndex = 0;
-            btnPesquisar.Location = new Point(580, 58);
+            btnPesquisar.ImageList = imageList1;
+            btnPesquisar.Location = new Point(424, 107);
             btnPesquisar.Name = "btnPesquisar";
             btnPesquisar.RightToLeft = RightToLeft.No;
             btnPesquisar.Size = new Size(45, 31);
             btnPesquisar.TabIndex = 7;
             btnPesquisar.TextImageRelation = TextImageRelation.ImageAboveText;
             btnPesquisar.UseVisualStyleBackColor = true;
+            btnPesquisar.Click += btnPesquisar_Click;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "64673.png");
             // 
             // txtPesquisa
             // 
             txtPesquisa.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            txtPesquisa.Location = new Point(-5, 58);
+            txtPesquisa.Location = new Point(12, 107);
             txtPesquisa.Name = "txtPesquisa";
             txtPesquisa.PlaceholderText = "Pesquisar...";
             txtPesquisa.Size = new Size(406, 30);
@@ -89,79 +94,101 @@
             dgvCelebridadesSearch.AllowUserToDeleteRows = false;
             dgvCelebridadesSearch.AllowUserToOrderColumns = true;
             dgvCelebridadesSearch.AllowUserToResizeColumns = false;
-            dgvCelebridadesSearch.AllowUserToResizeRows = false;
-            dataGridViewCellStyle3.BackColor = Color.Silver;
-            dgvCelebridadesSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = Color.Silver;
+            dgvCelebridadesSearch.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dgvCelebridadesSearch.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCellsExceptHeaders;
             dgvCelebridadesSearch.BackgroundColor = SystemColors.ActiveCaption;
             dgvCelebridadesSearch.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCelebridadesSearch.Columns.AddRange(new DataGridViewColumn[] { Título, Sinopse, DataLançamento, Duração });
-            dgvCelebridadesSearch.Location = new Point(-3, 143);
+            dgvCelebridadesSearch.Columns.AddRange(new DataGridViewColumn[] { Título, Função, Nascimento, LocalNascimento, Programas });
+            dgvCelebridadesSearch.Location = new Point(5, 143);
             dgvCelebridadesSearch.MultiSelect = false;
             dgvCelebridadesSearch.Name = "dgvCelebridadesSearch";
-            dgvCelebridadesSearch.ReadOnly = true;
-            dataGridViewCellStyle4.Alignment = DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = SystemColors.ButtonHighlight;
-            dataGridViewCellStyle4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            dataGridViewCellStyle4.ForeColor = SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = DataGridViewTriState.True;
-            dgvCelebridadesSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = SystemColors.ButtonHighlight;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            dataGridViewCellStyle2.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.True;
+            dgvCelebridadesSearch.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
             dgvCelebridadesSearch.RowHeadersVisible = false;
             dgvCelebridadesSearch.RowHeadersWidth = 51;
             dgvCelebridadesSearch.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             dgvCelebridadesSearch.RowTemplate.Height = 29;
-            dgvCelebridadesSearch.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvCelebridadesSearch.Size = new Size(1094, 540);
+            dgvCelebridadesSearch.ScrollBars = ScrollBars.Vertical;
+            dgvCelebridadesSearch.SelectionMode = DataGridViewSelectionMode.CellSelect;
+            dgvCelebridadesSearch.Size = new Size(1086, 540);
             dgvCelebridadesSearch.TabIndex = 6;
+            dgvCelebridadesSearch.CellContentClick += dgvCelebridadesSearch_CellContentClick;
+            // 
+            // lblCelebridades
+            // 
+            lblCelebridades.AutoSize = true;
+            lblCelebridades.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
+            lblCelebridades.Location = new Point(424, 22);
+            lblCelebridades.Name = "lblCelebridades";
+            lblCelebridades.Size = new Size(225, 46);
+            lblCelebridades.TabIndex = 10;
+            lblCelebridades.Text = "Celebridades";
+            // 
+            // btnVoltar
+            // 
+            btnVoltar.Location = new Point(12, 700);
+            btnVoltar.Name = "btnVoltar";
+            btnVoltar.Size = new Size(121, 46);
+            btnVoltar.TabIndex = 11;
+            btnVoltar.Text = "Voltar";
+            btnVoltar.UseVisualStyleBackColor = true;
+            btnVoltar.Click += btnVoltar_Click;
             // 
             // Título
             // 
             Título.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             Título.DataPropertyName = "Nome";
-            Título.FillWeight = 200F;
-            Título.HeaderText = "Título";
+            Título.FillWeight = 180F;
+            Título.HeaderText = "Nome";
             Título.MinimumWidth = 6;
             Título.Name = "Título";
-            Título.ReadOnly = true;
             // 
-            // Sinopse
+            // Função
             // 
-            Sinopse.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Sinopse.DataPropertyName = "Sinopse";
-            Sinopse.FillWeight = 300F;
-            Sinopse.HeaderText = "Sinopse";
-            Sinopse.MinimumWidth = 6;
-            Sinopse.Name = "Sinopse";
-            Sinopse.ReadOnly = true;
+            Função.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Função.HeaderText = "Função";
+            Função.MinimumWidth = 6;
+            Função.Name = "Função";
             // 
-            // DataLançamento
+            // Nascimento
             // 
-            DataLançamento.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            DataLançamento.DataPropertyName = "DataLancamento";
-            DataLançamento.FillWeight = 80F;
-            DataLançamento.HeaderText = "Data de Lançamento";
-            DataLançamento.MinimumWidth = 6;
-            DataLançamento.Name = "DataLançamento";
-            DataLançamento.ReadOnly = true;
+            Nascimento.HeaderText = "Nascimento";
+            Nascimento.MinimumWidth = 6;
+            Nascimento.Name = "Nascimento";
+            Nascimento.Width = 125;
             // 
-            // Duração
+            // LocalNascimento
             // 
-            Duração.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Duração.DataPropertyName = "Duração";
-            Duração.FillWeight = 80F;
-            Duração.HeaderText = "Duração";
-            Duração.MinimumWidth = 6;
-            Duração.Name = "Duração";
-            Duração.ReadOnly = true;
+            LocalNascimento.HeaderText = "Local de Nascimento";
+            LocalNascimento.MinimumWidth = 6;
+            LocalNascimento.Name = "LocalNascimento";
+            LocalNascimento.Width = 125;
+            // 
+            // Programas
+            // 
+            Programas.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Programas.DataPropertyName = "Sinopse";
+            Programas.FillWeight = 300F;
+            Programas.HeaderText = "Programas";
+            Programas.MinimumWidth = 6;
+            Programas.Name = "Programas";
+            Programas.Resizable = DataGridViewTriState.True;
             // 
             // frmCelebridade
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1094, 749);
+            ClientSize = new Size(1093, 749);
+            Controls.Add(btnVoltar);
+            Controls.Add(lblCelebridades);
             Controls.Add(nudPágina);
-            Controls.Add(cbbTipos);
             Controls.Add(btnPesquisar);
             Controls.Add(txtPesquisa);
             Controls.Add(dgvCelebridadesSearch);
@@ -176,13 +203,16 @@
         #endregion
 
         private NumericUpDown nudPágina;
-        private ComboBox cbbTipos;
         private Button btnPesquisar;
         private TextBox txtPesquisa;
         private DataGridView dgvCelebridadesSearch;
+        private ImageList imageList1;
+        private Label lblCelebridades;
+        private Button btnVoltar;
         private DataGridViewTextBoxColumn Título;
-        private DataGridViewTextBoxColumn Sinopse;
-        private DataGridViewTextBoxColumn DataLançamento;
-        private DataGridViewTextBoxColumn Duração;
+        private DataGridViewTextBoxColumn Função;
+        private DataGridViewTextBoxColumn Nascimento;
+        private DataGridViewTextBoxColumn LocalNascimento;
+        private DataGridViewTextBoxColumn Programas;
     }
 }

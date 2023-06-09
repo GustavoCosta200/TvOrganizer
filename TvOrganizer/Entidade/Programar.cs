@@ -14,15 +14,15 @@ namespace TVOrganizer.Entidade
         [JsonProperty("Programa")]
         public Programa Programa { get; set; }
         [JsonProperty("Data")]
-        public DateTime? Data { get; set; }
+        public string Data { get; set; }
         [JsonProperty("Hora")]
-        public DateTime? Hora { get; set; }
+        public string Hora { get; set; }
         [JsonProperty("Nota")]
         public double? Nota { get; set; }
         [JsonProperty("Comentario")]
         public string? Comentario { get; set; }
         [JsonProperty("Estado")]
-        public Status? Estado { get; set; }
+        public Status Estado { get; set; }
         [JsonProperty("Favorito")]
         public bool? Favorito { get; set; }
         [JsonProperty("IdEpConcluidos")]
@@ -36,13 +36,11 @@ namespace TVOrganizer.Entidade
             Favorito = false;
             if (programa is Série)
             {
-                Série serie = programa as Série;
-                IdEpConcluidos = new List<Episodio>(serie.Episodios);
+                IdEpConcluidos = new List<Episodio>();
             }
-
         }
 
-        public Programar(Programa programa, Status? estado) : this(programa)
+        public Programar(Programa programa, Status estado) : this(programa)
         {
             Estado = estado;
         }
@@ -51,47 +49,111 @@ namespace TVOrganizer.Entidade
         {
             Estado = Status.Concluido;
         }
-
-        public void ConcluirEpisodio(Episodio episodio)
-        {
-            if (Programa is Série)
-            {
-                Série? serie = Programa as Série;
-                Episodio? ep = serie.Episodios.Find(x => x.Titulo == episodio.Titulo);
-                try
-                {
-                    IdEpConcluidos.Add(ep);
-                }
-                catch (ArgumentNullException e)
-                {
-                }
-
-                //Organiza os episódios da lista de concluídos
-
-
-            }
-            else
-            {
-                //Alterar a exceção
-                throw new Exception();
-            }
-        }
-
-        public void ProgramarAssistir(Episodio episodio)
+        public void ProgramaAssistir()
         {
             Estado = Status.Assistindo;
         }
 
-        public string VerificarEpisodiosConcluidos()
+        public void FavoritarPrograma()
         {
-            if (Programa is not Série)
+            Favorito = true;
+        }
+
+        public void DesfavoritarPrograma()
+        {
+            Favorito = false;
+        }
+
+        public void ConcluirEpisodio(Episodio episodio)
+        {
+            if (IdEpConcluidos is null)
             {
-                throw new Exception();
+                return;
+            }
+
+            for (int i = 0; i < IdEpConcluidos.Count; i++)
+            {
+                if (IdEpConcluidos[i] == null) { continue;  }
+
+                if (IdEpConcluidos[i].Equals(episodio))
+                {
+                    IdEpConcluidos[i] = null;
+                    return;
+                }
+
+
+            }
+        }
+
+        public string? VerificarEpisodiosConcluidos()
+        {
+            if (IdEpConcluidos == null)
+            {
+                return null;
             }
             else
             {
-                return "1";
+                try
+                {
+                    for (int i = IdEpConcluidos.Count - 1; i >= 0; i--)
+                    {
+                        try
+                        {
+
+                            // Se o último episódio está concluido então a série foi concluida
+                            if (IdEpConcluidos[i] == null && i == IdEpConcluidos.Count - 1)
+                            {
+                                Estado = Status.Concluido;
+                                return null;
+
+                            }
+                            //O próximo episódio será o após o último episódio concluído (removido)
+                            else if (IdEpConcluidos[i] == null)
+                            {
+                                return IdEpConcluidos[i + 1].Id;
+                            }
+                        }
+                        catch (ArgumentOutOfRangeException)
+                        {
+                        }
+                    }
+                    return IdEpConcluidos[0].Id;
+                }
+                catch (Exception ex) { return null; }
             }
+
+
+        }
+
+        public void AdicionarComentário(string comentário)
+        {
+            Comentario = comentário;
+        }
+
+        public void AdicionarNota(double nota)
+        {
+            Nota = nota;
+        }
+
+        public void AdicionarData(string data)
+        {
+            Data = data;
+        }
+
+        public void AdicionarHorario(string hora)
+        {
+            Hora = hora;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is Programar))
+            {
+                return false;
+            }
+            Programar other = obj as Programar;
+
+            return Programa.Id.Equals(other.Programa.Id);
         }
     }
 }

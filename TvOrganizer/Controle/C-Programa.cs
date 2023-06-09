@@ -15,7 +15,7 @@ namespace TVOrganizer.Controle
 {
     internal class C_Programa
     {
-       
+
         internal static List<Série> RetornarSéries(dynamic results)
         {
             List<Série> respProgramas = new List<Série>();
@@ -49,6 +49,7 @@ namespace TVOrganizer.Controle
 
         internal static Programar CriarProgramar(dynamic results, string tipo)
         {
+            //Cria um programar da classe série com os valores correspondentes
             if (tipo == "Série")
             {
                 string nome = results.name;
@@ -67,15 +68,12 @@ namespace TVOrganizer.Controle
                 int nepisodios = results.number_of_episodes;
                 string finalizada = results.status;
                 int ntemporadas = results.number_of_seasons;
+                dynamic seasons = results.seasons;
 
                 Série serie = new Série(nome, sinopse, dataLancamento, id, generosNome, nepisodios, ntemporadas, finalizada);
-
-                //Gera os episódios que farão parte dessa série
-                dynamic temporadas = results.seasons;
-                C_Episodio.GerarEpisódios(temporadas, id, serie);
-
                 Programar progamado = new Programar(serie);
 
+                C_Episodio.GerarEpisódios(seasons, id, progamado);
                 return progamado;
             }
             else
@@ -100,17 +98,17 @@ namespace TVOrganizer.Controle
                 Filme filme = new Filme(nome, sinopse, datLancamento, nota, imagem, generosNome, duracao, id);
 
                 Programar progamado = new Programar(filme);
-                
+
                 return progamado;
             }
         }
 
         //Procura os programados do usuário com o id e o tipo
-        internal static Programar ProcurarProgramar(int id, string tipo)
+        internal static Programar? ProcurarProgramar(Programar programar)
         {
             Usuário user = C_Login.usuário;
 
-            Programar programado = user.programasSalvos.FirstOrDefault(x => x.Programa.Id == id && x.Programa.GetType().ToString() == tipo);
+            Programar? programado = user.programasSalvos.FirstOrDefault(x => x.Equals(programar));
 
             return programado;
         }

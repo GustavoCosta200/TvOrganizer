@@ -12,12 +12,14 @@ namespace TVOrganizer.Controle
 {
     internal class C_Episodio
     {
-        internal async static void GerarEpisódios(dynamic seasons, int seriesId, Série serie)
+        internal async static void GerarEpisódios(dynamic seasons, int seriesId, Programar programar)
         {
             foreach (var season in seasons)
             {
+                int seasonNumber = season.season_number;
+
                 var seasonRequest = RestService.For<ISeasonInformation>("https://api.themoviedb.org");
-                var seriesList = await seasonRequest.GetAdressAsync(seriesId.ToString(), season.id.ToString());
+                var seriesList = await seasonRequest.GetAdressAsync(seriesId.ToString(), seasonNumber.ToString());
                 dynamic seasonGet = JsonConvert.DeserializeObject(seriesList);
                 //Retorna os episódios da temporada atual
                 dynamic episodios = seasonGet.episodes;
@@ -31,14 +33,17 @@ namespace TVOrganizer.Controle
 
                     Episodio episode = new Episodio(titulo, sinopse, ntemporada, nepisodio);
 
-                    serie.AddEpisódio(episode);
+                    programar.IdEpConcluidos.Add(episode);
                 }
             }
 
-
+            C_Login.SalvarAlterações();
         }
         
-
-        
+        internal static void ConcluirEpisodio(Programar programar, Episodio episodio)
+        {
+            programar.ConcluirEpisodio(episodio);
+            C_Login.SalvarAlterações();
+        }
     }
 }

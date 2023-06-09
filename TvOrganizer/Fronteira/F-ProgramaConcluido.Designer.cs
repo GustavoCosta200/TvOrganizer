@@ -38,9 +38,9 @@
             Gênero = new DataGridViewTextBoxColumn();
             label1 = new Label();
             btnMenu = new Button();
-            btnComentar = new Button();
+            btnAvaliar = new Button();
             btnAssistir = new Button();
-            btnDarNota = new Button();
+            btnFavoritar = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvConcluidos).BeginInit();
             SuspendLayout();
             // 
@@ -61,7 +61,7 @@
             dgvConcluidos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dgvConcluidos.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvConcluidos.Columns.AddRange(new DataGridViewColumn[] { Título, Tipo, Sinopse, Nota, Comentário, Gênero });
-            dgvConcluidos.Location = new Point(-2, 124);
+            dgvConcluidos.Location = new Point(1, 79);
             dgvConcluidos.MultiSelect = false;
             dgvConcluidos.Name = "dgvConcluidos";
             dgvConcluidos.ReadOnly = true;
@@ -71,8 +71,9 @@
             dgvConcluidos.RowTemplate.Height = 29;
             dgvConcluidos.ScrollBars = ScrollBars.Vertical;
             dgvConcluidos.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvConcluidos.Size = new Size(865, 389);
+            dgvConcluidos.Size = new Size(1121, 482);
             dgvConcluidos.TabIndex = 0;
+            dgvConcluidos.CellFormatting += dgvConcluidos_CellFormatting;
             // 
             // Título
             // 
@@ -94,6 +95,7 @@
             // Sinopse
             // 
             Sinopse.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Sinopse.FillWeight = 300F;
             Sinopse.HeaderText = "Sinopse";
             Sinopse.MinimumWidth = 6;
             Sinopse.Name = "Sinopse";
@@ -128,7 +130,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 19.8000011F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(258, 37);
+            label1.Location = new Point(359, 9);
             label1.Name = "label1";
             label1.Size = new Size(379, 46);
             label1.TabIndex = 1;
@@ -136,25 +138,27 @@
             // 
             // btnMenu
             // 
-            btnMenu.Location = new Point(23, 539);
+            btnMenu.Location = new Point(32, 599);
             btnMenu.Name = "btnMenu";
             btnMenu.Size = new Size(134, 35);
             btnMenu.TabIndex = 2;
             btnMenu.Text = "Menu Principal";
             btnMenu.UseVisualStyleBackColor = true;
+            btnMenu.Click += btnMenu_Click;
             // 
-            // btnComentar
+            // btnAvaliar
             // 
-            btnComentar.Location = new Point(701, 539);
-            btnComentar.Name = "btnComentar";
-            btnComentar.Size = new Size(134, 35);
-            btnComentar.TabIndex = 3;
-            btnComentar.Text = "Comentar";
-            btnComentar.UseVisualStyleBackColor = true;
+            btnAvaliar.Location = new Point(931, 599);
+            btnAvaliar.Name = "btnAvaliar";
+            btnAvaliar.Size = new Size(134, 35);
+            btnAvaliar.TabIndex = 3;
+            btnAvaliar.Text = "Avaliar";
+            btnAvaliar.UseVisualStyleBackColor = true;
+            btnAvaliar.Click += btnAvaliar_Click;
             // 
             // btnAssistir
             // 
-            btnAssistir.Location = new Point(232, 539);
+            btnAssistir.Location = new Point(319, 599);
             btnAssistir.Name = "btnAssistir";
             btnAssistir.Size = new Size(156, 35);
             btnAssistir.TabIndex = 4;
@@ -162,23 +166,24 @@
             btnAssistir.UseVisualStyleBackColor = true;
             btnAssistir.Click += btnAssistir_Click;
             // 
-            // btnDarNota
+            // btnFavoritar
             // 
-            btnDarNota.Location = new Point(474, 539);
-            btnDarNota.Name = "btnDarNota";
-            btnDarNota.Size = new Size(134, 35);
-            btnDarNota.TabIndex = 5;
-            btnDarNota.Text = "Dar Nota";
-            btnDarNota.UseVisualStyleBackColor = true;
+            btnFavoritar.Location = new Point(644, 599);
+            btnFavoritar.Name = "btnFavoritar";
+            btnFavoritar.Size = new Size(134, 35);
+            btnFavoritar.TabIndex = 6;
+            btnFavoritar.Text = "Favoritar";
+            btnFavoritar.UseVisualStyleBackColor = true;
+            btnFavoritar.Click += btnFavoritar_Click;
             // 
             // frmProgramaConcluido
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(866, 586);
-            Controls.Add(btnDarNota);
+            ClientSize = new Size(1121, 646);
+            Controls.Add(btnFavoritar);
             Controls.Add(btnAssistir);
-            Controls.Add(btnComentar);
+            Controls.Add(btnAvaliar);
             Controls.Add(btnMenu);
             Controls.Add(label1);
             Controls.Add(dgvConcluidos);
@@ -197,14 +202,14 @@
         private DataGridView dgvConcluidos;
         private Label label1;
         private Button btnMenu;
-        private Button btnComentar;
+        private Button btnAvaliar;
         private Button btnAssistir;
-        private Button btnDarNota;
         private DataGridViewTextBoxColumn Título;
         private DataGridViewTextBoxColumn Tipo;
         private DataGridViewTextBoxColumn Sinopse;
         private DataGridViewTextBoxColumn Nota;
         private DataGridViewTextBoxColumn Comentário;
         private DataGridViewTextBoxColumn Gênero;
+        private Button btnFavoritar;
     }
 }

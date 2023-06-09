@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TvOrganizer.Fronteira;
 using TVOrganizer.Controle;
 using TVOrganizer.Entidade;
 using TVOrganizer.Fronteira;
@@ -38,8 +39,13 @@ namespace TVOrganizer.Fronteira
             foreach (Programar programar in programas)
             {
                 string tipo = programar.IdEpConcluidos == null ? "Filme" : "Série";
+                string generos = "";
+                foreach (string genero in programar.Programa.Gênero)
+                {
+                    generos += genero + Environment.NewLine;
+                }
                 string[] linha = { programar.Programa.Nome, tipo, programar.Programa.Sinopse, programar.Nota.ToString(),
-                programar.Comentario, programar.Programa.Gênero.ToString() };
+                programar.Comentario, generos };
                 dgvConcluidos.Rows.Add(linha);
             }
         }
@@ -63,7 +69,47 @@ namespace TVOrganizer.Fronteira
 
             C_Assistindo.ProgramarAssistir(programar);
 
-            dgvConcluidos.Refresh();
+            PreencherTabela();
+        }
+
+        private void btnMenu_Click(object sender, EventArgs e)
+        {
+            frmTelaProgramas frmTelaProgramas = new frmTelaProgramas();
+            frmTelaProgramas.Show();
+            this.Hide();
+        }
+
+        private void dgvConcluidos_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void btnAvaliar_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow linhaSelecionada = dgvConcluidos.SelectedRows[0];
+            int index = linhaSelecionada.Index;
+            Programar programar = Concluídos[index];
+
+            frmAvaliar frmAvaliar = new frmAvaliar();
+            frmAvaliar.CarregarAvaliação(programar);
+            frmAvaliar.ShowDialog();
+            this.Hide();
+        }
+
+        private void btnFavoritar_Click(object sender, EventArgs e)
+        {
+            if (Confirmar("Deseja Favoritar este programa?"))
+            {
+                DataGridViewRow linhaSelecionada = dgvConcluidos.SelectedRows[0];
+                int index = linhaSelecionada.Index;
+                Programar programar = Concluídos[index];
+
+                C_Favoritos.FavoritarPrograma(programar);
+            }
+        }
+
+        private void dgvConcluidos_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
         }
     }
 }
